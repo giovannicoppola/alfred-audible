@@ -3,5 +3,5 @@ an Alfred workflow to access your Audible library and wish list based on [audibl
 ## Library and wishlist search
 ![](alfred-audible.gif)
 
-## Catalog search
+## Audible Catalog search
 ![](catalog-search.gif)
