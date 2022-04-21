@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream
-# coming soon: alfred-audible
-an Alfred workflow to access your Audible library and wish list based on [audible-cli](https://github.com/mkb79/audible-cli)
-## Library and wishlist search
-![](alfred-audible.gif)
-
-## Audible catalog search
-![](catalog-search.gif)
-=======
 # alfred-audible
 ### An [Alfred](https://www.alfredapp.com/) workflow to interact with your [Audible](https://apps.ankiweb.net) library and wish list based on [audible-cli](https://github.com/mkb79/audible-cli) 
 
@@ -131,4 +122,3 @@ None for now, but I have not done extensive testing, let me know if you see anyt
 # Feedback
 
 Feedback welcome! If you notice a bug, or have ideas for new features, please feel free to get in touch either here, or on the [Alfred](https://www.alfredforum.com) forum. 
->>>>>>> Stashed changes
