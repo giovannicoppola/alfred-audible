@@ -1,5 +1,5 @@
 # alfred-audible
-### An [Alfred](https://www.alfredapp.com/) workflow to interact with your [Audible](https://apps.ankiweb.net) library and wish list based on [audible-cli](https://github.com/mkb79/audible-cli) 
+### An [Alfred](https://www.alfredapp.com/) workflow to interact with your [Audible](https://apps.ankiweb.net) library and wish list based on [audible-cli](https://github.com/mkb79/audible-cli), an unofficial Audible API by [mkb79](https://github.com/mkb79) 
 
 <a href="https://github.com/giovannicoppola/alfred-audible/releases/latest/">
 <img alt="Downloads"
