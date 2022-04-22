@@ -24,7 +24,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 <a name="motivation"></a>
-# Motivation
+# Motivation ✅
 - Being able to search my library and wish list, as well as the Audible catalog, from Alfred. 
 - Being able to add or remove items from the wishlist. 
 
