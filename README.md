@@ -37,7 +37,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - an [Audible](https://www.audible.com/) account
 
 ## Setting up a new Audible device
-- This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter in Alfred `audible:setup` to start setting up a new device. A Terminal window will open with the questions below. Return (default answer) will be OK except for the ones **in bold**
+- This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter `audible:setup` in Alfred to start setting up a new device. A Terminal window will open with the questions below. Hitting Enter (default answer) will be OK except for the ones **in bold**
  	
 	- Please enter a name for your primary profile [audible]: 
 	- **Enter a country code for the profile**: *(one of 'us', 'ca', 'uk', 'au', 'fr', 'de', 'es', 'jp', 'it', 'in')*
@@ -59,7 +59,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 ## Default settings
-1. In Alfred, open the 'Configure Workflow and Variables' window in `alfred-audible` preferences
+In Alfred, open the 'Configure Workflow and Variables' window in `alfred-audible` preferences
 	<img src='images/alfred_prefs.png' width="500">
 	
 	- _Optional:_ set the emoji you want to show to mark when a record is in your library (`LIBRARY_SYMBOL`, default: 📗) or in your wishlist(`WISHLIST_SYMBOL`, default: 📕)
