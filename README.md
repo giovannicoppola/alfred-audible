@@ -59,7 +59,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 ## Default settings
-1. In Alfred, open the 'Configure Workflow and Variables' window in `alfred-ticker` preferences
+1. In Alfred, open the 'Configure Workflow and Variables' window in `alfred-audible` preferences
 	<img src='images/alfred_prefs.png' width="500">
 	
 	- _Optional:_ set the emoji you want to show to mark when a record is in your library (`LIBRARY_SYMBOL`, default: 📗) or in your wishlist(`WISHLIST_SYMBOL`, default: 📕)
