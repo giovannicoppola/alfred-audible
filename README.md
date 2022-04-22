@@ -63,25 +63,23 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 	<img src='images/alfred_prefs.png' width="500">
 	
 	- _Optional:_ set the emoji you want to show to mark when a record is in your library (`LIBRARY_SYMBOL`, default: 📗) or in your wishlist(`WISHLIST_SYMBOL`, default: 📕)
-	- _Optional:_ set the worklow variable `CATALOG_RESULTS` controlling the max number of returned results (default and max is 50)
-	- _Optional:_ Setup a hotkey to launch alfred-audible
-	- _Optional:_ Change the keyword to launch library/wishlist search (currently set to `@a`)
-	- _Optional:_ Change the keyword to launch catalog search (currently set to `@aa`)
-	- _Optional:_ Change the database refresh frequency in days (default: 30 days)
+	- _Optional:_ set the worklow variable `CATALOG_RESULTS` to control the max number of returned results (default and max is 50)
+	- _Optional:_ Change the keyword to launch library/wishlist search (currently set to `@a`), or set a hotkey
+	- _Optional:_ Change the keyword to launch catalog search (currently set to `@aa`), or set a hotkey
+	- _Optional:_ Change the database refresh frequency in days (`UPDATE_DAYS` default: 30 days)
 
 
 
 
 <a name="usage"></a>
 # Basic Usage 
-## Querying your library and wish list
-- Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and database
+## Searching your library and wish list
+- Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and wish list. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
 - `command-enter` (`⌘↩️`) search books by the (first) author
 - `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
-- `shift-enter` (`⇧↩️`) open your library on the Audible website
-
-- `shift-cmd-enter` (`⇧⌘↩️`) open library on the Audible website
+- `ctrl-enter` (`^↩️`) remove items from the wish list
+- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website
 - `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
 
 
@@ -92,14 +90,13 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - `option-enter` (`⌥↩️`) to search books narrated by the (first) narrator
 - `shift-enter` (`⇧↩️`) to show audiobook description
 - `ctrl-enter` (`^↩️`) to add or remove items from the wish list
-
-- `shift-cmd-enter` (`⇧⌘↩️`) open library on the Audible website
+- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website
 - `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
 
 
 
 ## Refreshing the database
-- Launch `audible:refresh` to force database refresh
+- database will refresh as indicated by the `UPDATE_DAYS` variable. Launch `audible:refresh` to force database refresh
 
 <a name="known-issues"></a>
 # Limitations & Known issues 
