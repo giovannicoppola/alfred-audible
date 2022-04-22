@@ -111,6 +111,7 @@ None for now, but I have not done extensive testing, let me know if you see anyt
 
 - [@mkb79](https://github.com/mkb79) for developing the `audible` API library and for great help and support!
 - icons from [srip](https://www.flaticon.com/authors/srip), and [freepik](https://www.flaticon.com/authors/freepik), [www.flaticon.com](www.flaticon.com)
+- [Vítor Galvão](https://github.com/vitorgalvao) for [OneUpdater](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater) and terrific help on the Alfred forum.
 - The [Alfred forum](https://www.alfredforum.com) community.
 
 <a name="changelog"></a>
