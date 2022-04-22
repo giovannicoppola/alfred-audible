@@ -85,18 +85,19 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 ## Searching the Audible catalog
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query the Audible catalog. Items in your library or wishlist are marked with the corresponding icon. ✅ marks read items. 
-- `enter` (`↩️`) to open the item on the Audible website
-- `command-enter` (`⌘↩️`) to search books by the (first) author
-- `option-enter` (`⌥↩️`) to search books narrated by the (first) narrator
-- `shift-enter` (`⇧↩️`) to show audiobook description
-- `ctrl-enter` (`^↩️`) to add or remove items from the wish list
+- `enter` (`↩️`) open the item on the Audible website
+- `command-enter` (`⌘↩️`) search books by the (first) author
+- `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
+- `shift-enter` (`⇧↩️`) show audiobook description
+- `ctrl-enter` (`^↩️`) add or remove items from the wish list
 - `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website
 - `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
 
 
 
 ## Refreshing the database
-- database will refresh as indicated by the `UPDATE_DAYS` variable. Launch `audible:refresh` to force database refresh
+- database will refresh as indicated by the `UPDATE_DAYS` variable. 
+- launch `audible:refresh` to force database refresh
 
 <a name="known-issues"></a>
 # Limitations & Known issues 
