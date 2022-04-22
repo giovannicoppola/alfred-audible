@@ -1,4 +1,4 @@
-# alfred-audible
+# alfred-audible 🎧
 ### An [Alfred](https://www.alfredapp.com/) workflow to interact with your [Audible](https://apps.ankiweb.net) library and wish list based on [audible-cli](https://github.com/mkb79/audible-cli), an unofficial Audible API by [mkb79](https://github.com/mkb79) 
 
 <a href="https://github.com/giovannicoppola/alfred-audible/releases/latest/">
@@ -29,14 +29,14 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - Being able to add or remove items from the wishlist. 
 
 <a name="setting-up"></a>
-# Setting up
+# Setting up ⚙️
 ## Needed
 
 - Alfred with Powerpack license
 - Python3 (howto [here](https://www.freecodecamp.org/news/python-version-on-mac-update/))
 - an [Audible](https://www.audible.com/) account
 
-## Setting up a new Audible device
+## Setting up a new Audible device 📲
 - This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter `audible:setup` in Alfred to start setting up a new device. A Terminal window will open with the questions below. Hitting Enter (default answer) will be OK except for the ones **in bold**
  	
 	- Please enter a name for your primary profile [audible]: 
@@ -58,7 +58,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - Close the Terminal window
 
 
-## Default settings
+## Default settings 
 - In Alfred, open the 'Configure Workflow and Variables' window in `alfred-audible` preferences
 	<img src='images/alfred_prefs.png' width="500">
 	
@@ -72,8 +72,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 <a name="usage"></a>
-# Basic Usage 
-## Searching your library and wish list
+# Basic Usage 📖
+## Searching your library and wish list 🔍
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and wish list. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
 - `command-enter` (`⌘↩️`) search books by the (first) author
@@ -83,7 +83,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
 
 
-## Searching the Audible catalog
+## Searching the Audible catalog 📚
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query the Audible catalog. Items in your library or wishlist are marked with the corresponding icon. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
 - `command-enter` (`⌘↩️`) search books by the (first) author
@@ -95,17 +95,18 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 
-## Refreshing the database
+## Refreshing the database 🔄
 - database will refresh as indicated by the `UPDATE_DAYS` variable. 
 - launch `audible:refresh` to force database refresh
 
 <a name="known-issues"></a>
-# Limitations & Known issues 
-None for now, but I have not done extensive testing, let me know if you see anything!
+# Limitations & Known issues ⚠️
+- None for now, but I have not done extensive testing, let me know if you see anything!
+- tested with Python 3.8.9
 
 
 <a name="acknowledgments"></a>
-# Acknowledgments
+# Acknowledgments 😀
 
 - [@mkb79](https://github.com/mkb79) for developing the `audible` API library and for great help and support!
 - icons from [srip](https://www.flaticon.com/authors/srip), and [freepik](https://www.flaticon.com/authors/freepik), [www.flaticon.com](www.flaticon.com)
@@ -113,11 +114,11 @@ None for now, but I have not done extensive testing, let me know if you see anyt
 - The [Alfred forum](https://www.alfredforum.com) community.
 
 <a name="changelog"></a>
-# Changelog
+# Changelog 🧰
 
 - 04-22-2022: version 0.1
 
 <a name="feedback"></a>
-# Feedback
+# Feedback 🧐
 
 Feedback welcome! If you notice a bug, or have ideas for new features, please feel free to get in touch either here, or on the [Alfred](https://www.alfredforum.com) forum. 
