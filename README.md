@@ -35,6 +35,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - Alfred with Powerpack license
 - Python3 (howto [here](https://www.freecodecamp.org/news/python-version-on-mac-update/))
 - an [Audible](https://www.audible.com/) account
+- `pip3` installed (how to [here](https://dev.to/stankukucka/how-to-install-pip3-on-mac-2hi4))
 
 ## Setting up a new Audible device 📲
 - This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter `audible:setup` in Alfred to start setting up a new device. A Terminal window will open with the questions below. Hitting Enter (default answer) will be OK except for the ones **in bold**
@@ -49,9 +50,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 	- **Please enter your amazon username:** *enter your audible/amazon account info*
 	- **Please enter your amazon password:** *enter your audible/amazon account info*
 	- **Repeat for confirmation:**
-	- Login with amazon to your audible account now.
-	- Captcha found
-	- Open Captcha with default image viewer [Y/n]:
+	- **Confirm account information** *note: default here is Abort, need to enter `y`*
+	- Captcha found... Open Captcha with default image viewer [Y/n]:
 	- **Answer for CAPTCHA:**
 	- Approval alert detected! Amazon sends you a mail.
 	- **Please press ENTER when you approve the notification.**
@@ -65,7 +65,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 	- _Optional:_ set the emoji you want to show to mark when a record is in your library (`LIBRARY_SYMBOL`, default: 📗) or in your wishlist(`WISHLIST_SYMBOL`, default: 📕)
 	- _Optional:_ set the worklow variable `CATALOG_RESULTS` to control the max number of returned results (default and max is 50)
 	- _Optional:_ Change the keyword to launch library/wishlist search (currently set to `@a`), or set a hotkey
-	- _Optional:_ Change the keyword to launch catalog search (currently set to `@aa`), or set a hotkey
+	- _Optional:_ Change the keyword to launch catalog search (currently set to `@c`), or set a hotkey
 	- _Optional:_ Change the database refresh frequency in days (`UPDATE_DAYS` default: 30 days)
 
 
@@ -79,8 +79,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - `command-enter` (`⌘↩️`) search books by the (first) author
 - `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
 - `ctrl-enter` (`^↩️`) remove items from the wish list
-- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website
-- `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
+- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website (*need to be logged in*)
+- `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website (*need to be logged in*)
 
 
 ## Searching the Audible catalog 📚
@@ -90,8 +90,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
 - `shift-enter` (`⇧↩️`) show audiobook description
 - `ctrl-enter` (`^↩️`) add or remove items from the wish list
-- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website
-- `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website
+- `shift-cmd-enter` (`⇧⌘↩️`) open your library on the Audible website (*need to be logged in*)
+- `ctrl-cmd-enter` (`^⌘↩️`) open your wish list on the Audible website (*need to be logged in*)
 
 
 
@@ -116,7 +116,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 <a name="changelog"></a>
 # Changelog 🧰
 
-- 04-22-2022: version 0.1
+- 04-23-2022: version 0.1
 
 <a name="feedback"></a>
 # Feedback 🧐
