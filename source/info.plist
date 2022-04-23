@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>giovanni-audible</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>11568AD6-42A1-4B96-A845-48306CC2DDB1</key>
@@ -81,16 +79,6 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>700EF930-B1B6-4D6F-B6B3-2AB545ABF9C7</string>
-				<key>modifiers</key>
-				<integer>131072</integer>
-				<key>modifiersubtext</key>
-				<string>show audiobook description</string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
 				<string>2962ACD1-6296-47E5-BCD4-C63ED0054ACC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -98,6 +86,16 @@
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>700EF930-B1B6-4D6F-B6B3-2AB545ABF9C7</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>show audiobook description</string>
+				<key>vitoclose</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -124,19 +122,6 @@
 				<string>BED6AEF0-6053-4308-B462-29A7A5EFA728</string>
 				<key>modifiers</key>
 				<integer>1310720</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>7B0767BB-4350-4CD9-8C7D-89784B714C5E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>20FE0050-6161-4401-B066-7C1DC1AAF443</string>
-				<key>modifiers</key>
-				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
@@ -216,38 +201,30 @@
 				<false/>
 			</dict>
 		</array>
+		<key>BC704C1E-88AF-48BC-89DF-1F9C6CA54645</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>20FE0050-6161-4401-B066-7C1DC1AAF443</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>giovanni</string>
 	<key>description</key>
-	<string></string>
+	<string>A workflow to interact with your Audible library and wishlist, and to query the Audible catalog</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>alfred-audible</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>audible:setup</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>setup audible account</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>7B0767BB-4350-4CD9-8C7D-89784B714C5E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -279,8 +256,83 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
+				<string>open $1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>772C416B-A77F-46CC-8F2F-4EC698D7D7A9</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>audible:setup</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>please wait while I install the libraries... ⏳</string>
+				<key>script</key>
+				<string>export PYTHONPATH="$PWD/lib"
+export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin
+python3 installLibraries.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>install libraries and setup audible device</string>
+				<key>title</key>
+				<string>setting up alfred-audible</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BC704C1E-88AF-48BC-89DF-1F9C6CA54645</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
 				<string>on run argv
 
+	do shell script "python3 installLibraries.py"
 	set myPath to ((system attribute "alfred_preferences") &amp; "/workflows/" &amp; (system attribute "alfred_workflow_uid"))
 
 	set myPathQ to quoted form of myPath
@@ -306,29 +358,6 @@ end run</string>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
 			<string>20FE0050-6161-4401-B066-7C1DC1AAF443</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>open $1</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>5</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>772C416B-A77F-46CC-8F2F-4EC698D7D7A9</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -459,8 +488,8 @@ python3 rebuild.py</string>
 				<integer>0</integer>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist=''
-readonly workflow_url=''
+readonly remote_info_plist='https://raw.githubusercontent.com/giovannicoppola/alfred-audible/main/source/info.plist'
+readonly workflow_url='https://github.com/giovannicoppola/alfred-audible'
 readonly download_type='github_release'
 readonly frequency_check='7'
 
@@ -590,9 +619,7 @@ fi</string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
-				<integer>1835008</integer>
-				<key>hotstring</key>
-				<string>A</string>
+				<integer>0</integer>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -623,7 +650,7 @@ fi</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>@aa</string>
+				<string>@c</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -741,9 +768,7 @@ python3 audi-query.py "$1"
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
-				<integer>1179648</integer>
-				<key>hotstring</key>
-				<string>A</string>
+				<integer>0</integer>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -882,9 +907,9 @@ python3 audi-query.py "$1"
 		<key>16E38AB1-12B2-40DD-B1FA-E55AE18D4A72</key>
 		<dict>
 			<key>xpos</key>
-			<integer>65</integer>
+			<integer>1115</integer>
 			<key>ypos</key>
-			<integer>170</integer>
+			<integer>235</integer>
 		</dict>
 		<key>1B74977C-E957-4A10-94F6-82C4B7DCE1A1</key>
 		<dict>
@@ -896,9 +921,9 @@ python3 audi-query.py "$1"
 		<key>20FE0050-6161-4401-B066-7C1DC1AAF443</key>
 		<dict>
 			<key>xpos</key>
-			<integer>305</integer>
+			<integer>1320</integer>
 			<key>ypos</key>
-			<integer>30</integer>
+			<integer>65</integer>
 		</dict>
 		<key>23FCAD78-ADCA-4E99-92F6-618CF98CA200</key>
 		<dict>
@@ -914,9 +939,9 @@ python3 audi-query.py "$1"
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>1080</integer>
+			<integer>805</integer>
 			<key>ypos</key>
-			<integer>330</integer>
+			<integer>325</integer>
 		</dict>
 		<key>3D04FB6C-3449-4C69-A002-732EB1BEB4BD</key>
 		<dict>
@@ -950,13 +975,6 @@ python3 audi-query.py "$1"
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
-		<key>7B0767BB-4350-4CD9-8C7D-89784B714C5E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>70</integer>
-			<key>ypos</key>
-			<integer>30</integer>
-		</dict>
 		<key>84C57E29-9A98-42F0-A062-F9E4177E9D24</key>
 		<dict>
 			<key>colorindex</key>
@@ -983,6 +1001,13 @@ python3 audi-query.py "$1"
 			<integer>585</integer>
 			<key>ypos</key>
 			<integer>550</integer>
+		</dict>
+		<key>BC704C1E-88AF-48BC-89DF-1F9C6CA54645</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1110</integer>
+			<key>ypos</key>
+			<integer>65</integer>
 		</dict>
 		<key>BCE49E82-4694-4B54-B139-F365E3B7A663</key>
 		<dict>
@@ -1019,6 +1044,6 @@ python3 audi-query.py "$1"
 	<key>version</key>
 	<string>0.1</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/giovannicoppola/alfred-audible</string>
 </dict>
 </plist>
