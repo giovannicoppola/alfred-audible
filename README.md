@@ -76,6 +76,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 ## Searching your library and wish list 🔍
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and wish list. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
+- `shift` (`⇧`, preview) preview the audiobook cover 
 - `command-enter` (`⌘↩️`) search books by the (first) author
 - `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
 - `ctrl-enter` (`^↩️`) remove items from the wish list
