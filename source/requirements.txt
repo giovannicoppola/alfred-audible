@@ -1,2 +1,2 @@
 pyparsing<3,>=2.4.2
-audible-cli @ git+https://github.com/mkb79/audible-cli@development
+audible-cli @ git+https://github.com/mkb79/audible-cli
