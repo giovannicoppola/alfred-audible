@@ -38,6 +38,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - `pip3` installed (how to [here](https://dev.to/stankukucka/how-to-install-pip3-on-mac-2hi4))
 
 ## Setting up a new Audible device 📲
+- launch `audible:setup` to 1) download the `audible-cli` package and dependancies and 2) setup your Audible device
 - This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter `audible:setup` in Alfred to start setting up a new device. A Terminal window will open with the questions below. Hitting Enter (default answer) will be OK except for the ones **in bold**
  	
 	- Please enter a name for your primary profile [audible]: 
@@ -76,6 +77,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 ## Searching your library and wish list 🔍
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and wish list. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
+- `shift` (`⇧`, preview) preview the audiobook cover 
 - `command-enter` (`⌘↩️`) search books by the (first) author
 - `option-enter` (`⌥↩️`) search books narrated by the (first) narrator
 - `ctrl-enter` (`^↩️`) remove items from the wish list
