@@ -119,6 +119,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 # Changelog 🧰
 
 - 04-23-2022: version 0.1
+- 06-17-2022: version 0.2 (updating the `audible-cli` package)
 
 <a name="feedback"></a>
 # Feedback 🧐
