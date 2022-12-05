@@ -6,7 +6,7 @@
 src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/total?color=purple&label=Downloads"><br/>
 </a>
 
-![](alfred-audible.gif)
+![](images/alfred-audible.gif)
 
 
 <!-- MarkdownTOC autolink="true" bracket="round" depth="3" autoanchor="true" -->
@@ -23,13 +23,13 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 
-<a name="motivation"></a>
-# Motivation ✅
+<h1 id="motivation">Motivation ✅</h1>
+
 - Being able to search my library and wish list, as well as the Audible catalog, from Alfred. 
 - Being able to add or remove items from the wishlist. 
 
-<a name="setting-up"></a>
-# Setting up ⚙️
+<h1 id="setting-up">Setting up ⚙️</h1>
+
 ## Needed
 
 - Alfred with Powerpack license
@@ -60,8 +60,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 
 ## Default settings 
-- In Alfred, open the 'Configure Workflow and Variables' window in `alfred-audible` preferences
-	<img src='images/alfred_prefs.png' width="500">
+- In Alfred, open the 'Configure Workflow' window in `alfred-audible` preferences
 	
 	- _Optional:_ set the emoji you want to show to mark when a record is in your library (`LIBRARY_SYMBOL`, default: 📗) or in your wishlist(`WISHLIST_SYMBOL`, default: 📕)
 	- _Optional:_ set the worklow variable `CATALOG_RESULTS` to control the max number of returned results (default and max is 50)
@@ -70,10 +69,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 	- _Optional:_ Change the database refresh frequency in days (`UPDATE_DAYS` default: 30 days)
 
 
+<h1 id="usage">Basic Usage 📖</h1>
 
-
-<a name="usage"></a>
-# Basic Usage 📖
 ## Searching your library and wish list 🔍
 - Launch `alfred-audible` with the keyword or hotkey. Type additional characters to query library and wish list. ✅ marks read items. 
 - `enter` (`↩️`) open the item on the Audible website
@@ -101,27 +98,25 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 - database will refresh as indicated by the `UPDATE_DAYS` variable. 
 - launch `audible:refresh` to force database refresh
 
-<a name="known-issues"></a>
-# Limitations & Known issues ⚠️
+<h1 id="known-issues">Limitations & Known issues ⚠️</h1>
+
 - None for now, but I have not done extensive testing, let me know if you see anything!
 - tested with Python 3.8.9
 
 
-<a name="acknowledgments"></a>
-# Acknowledgments 😀
+<h1 id="acknowledgments">Acknowledgments 😀</h1>
 
 - [@mkb79](https://github.com/mkb79) for developing the `audible` API library and for great help and support!
 - icons from [srip](https://www.flaticon.com/authors/srip), and [freepik](https://www.flaticon.com/authors/freepik), [www.flaticon.com](www.flaticon.com)
 - [Vítor Galvão](https://github.com/vitorgalvao) for [OneUpdater](https://github.com/vitorgalvao/alfred-workflows/tree/master/OneUpdater) and terrific help on the Alfred forum.
 - The [Alfred forum](https://www.alfredforum.com) community.
 
-<a name="changelog"></a>
-# Changelog 🧰
+<h1 id="changelog">Changelog 🧰</h1>
 
-- 04-23-2022: version 0.1
+- 12-04-2022: version 0.3 (Alfred 5)
 - 06-17-2022: version 0.2 (updating the `audible-cli` package)
+- 04-23-2022: version 0.1
 
-<a name="feedback"></a>
-# Feedback 🧐
+<h1 id="feedback">Feedback 🧐</h1>
 
 Feedback welcome! If you notice a bug, or have ideas for new features, please feel free to get in touch either here, or on the [Alfred](https://www.alfredforum.com) forum. 
