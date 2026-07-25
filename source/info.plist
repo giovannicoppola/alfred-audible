@@ -289,8 +289,7 @@
 				<key>runningsubtext</key>
 				<string>please wait while I install the libraries... ⏳</string>
 				<key>script</key>
-				<string>export PYTHONPATH="$PWD/lib"
-export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin
+				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 python3 installLibraries.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -359,27 +358,18 @@ end run</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>export PYTHONPATH="$PWD/lib"
-export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin
+				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
+VENV_PY="$alfred_workflow_data/venv/bin/python"
 
-
- if [[ $wishlistCode == 1 ]] ; then  
-	audible wishlist add -a $1
-	
-	export PYTHONPATH="$PWD"
+ if [[ $wishlistCode == 1 ]] ; then
+	"$VENV_PY" -m audible_cli wishlist add -a "$1"
 	python3 AddWish.py
 
 
-	elif [[ $wishlistCode == 2 ]]; then   
-		audible wishlist remove -a $1
+	elif [[ $wishlistCode == 2 ]]; then
+		"$VENV_PY" -m audible_cli wishlist remove -a "$1"
 		python3 RemoveWish.py
- fi
-
-
-
-#audible api -m post -b '{"asin":"'"${1}"'"}' wishlist
-
-#export PYTHONPATH="$PWD/lib";export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin;audible api -m post -b '{"asin":"'"${1}"'"}' wishlist</string>
+ fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -443,11 +433,7 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin
 				<key>runningsubtext</key>
 				<string>please wait... ⏳</string>
 				<key>script</key>
-				<string>export PYTHONPATH="$PWD/lib"
-#export PATH=$PWD/lib/bin
-export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH:$PWD/lib/bin
-audible library export --format 'json'
-audible wishlist export --format 'json'
+				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 python3 rebuild.py</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -555,10 +541,9 @@ python3 rebuild.py</string>
 				<key>runningsubtext</key>
 				<string>please wait while I retrieve your records 👀</string>
 				<key>script</key>
-				<string>export PYTHONPATH="$PWD/lib"
-export PATH=/opt/homebrew/bin:/usr/local/bin:$PWD/lib/bin:$PATH
+				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 
-audible api catalog/products -p num_results=$CATALOG_RESULTS -p response_groups=contributors,product_desc,product_details,media -p keywords=$1 | python3 audiCatalogSearch.py
+"$alfred_workflow_data/venv/bin/python" -m audible_cli api catalog/products -p num_results="$CATALOG_RESULTS" -p response_groups=contributors,product_desc,product_details,media -p keywords="$1" | python3 audiCatalogSearch.py
  
 
 
@@ -618,14 +603,6 @@ audible api catalog/products -p num_results=$CATALOG_RESULTS -p response_groups=
 				<key>script</key>
 				<string>export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 python3 audi-query.py "$1"
-
-
-
-
-
-
-
-
 </string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -994,9 +971,9 @@ python3 audi-query.py "$1"
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Emoji to show that a title is in your wishlist</string>
+			<string>Database refresh rate (in days)</string>
 			<key>label</key>
-			<string>Wishlist symbol</string>
+			<string>Update days</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
@@ -1015,9 +992,9 @@ python3 audi-query.py "$1"
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Database refresh rate (in days)</string>
+			<string>Emoji to show that a title is in your wishlist</string>
 			<key>label</key>
-			<string>Update Days</string>
+			<string>Wishlist symbol</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
@@ -1090,7 +1067,7 @@ python3 audi-query.py "$1"
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.3</string>
+	<string>0.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/giovannicoppola/alfred-audible</string>
 </dict>

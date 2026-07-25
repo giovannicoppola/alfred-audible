@@ -10,29 +10,32 @@ import json
 import os
 import re
 
-from config import CATALOG_RESULTS, MY_URL_STRING, MY_URL_ROOT, WISHLIST_SYMBOL, LIBRARY_SYMBOL, CACHE_FOLDER_IMAGES, WF_LIB_FOLDER
+from config import MY_URL_STRING, MY_URL_ROOT, WISHLIST_SYMBOL, LIBRARY_SYMBOL, VENV_PYTHON
 from audi_fun import *
 
-if not os.path.exists(WF_LIB_FOLDER):
-    
-    resultErr= {"items": [{
-        "title": "🚨 need to setup first! 🚨",
-        "subtitle": "Enter audible:setup in Alfred",
+def errorItem(myTitle, mySubtitle):
+    print(json.dumps({"items": [{
+        "title": myTitle,
+        "subtitle": mySubtitle,
         "arg": "",
-        "icon": {
-            "path": ""
-            }
-            }]}
-    print (json.dumps(resultErr))
-    quit()
-    
+        "icon": {"path": "icons/Warning.png"}
+    }]}))
+    sys.exit(0)
 
-myLog = "".join([i for i in sys.stdin]) # getting output of API-based catalog search
 
-json_data = eval(r'''myLog''')
-json_data = json.loads(json_data)
+if not os.path.exists(VENV_PYTHON):
+    errorItem("🚨 need to setup first! 🚨", "Enter audible:setup in Alfred")
 
-myTotal=json_data['total_results']
+
+myLog = sys.stdin.read() # getting output of API-based catalog search
+
+json_data = {}
+myTotal = 0
+try:
+    json_data = json.loads(myLog)
+    myTotal = json_data['total_results']
+except (json.JSONDecodeError, KeyError):
+    errorItem("🚨 catalog search failed", (myLog.strip().splitlines() or ["no output from audible-cli"])[-1])
 
 
 TAG_RE = re.compile(r'<[^>]+>')
@@ -50,10 +53,9 @@ myCount = 0
 if myTotal >0:
 
     for T in json_data['products']:
-        
+
         myCount += 1
-        myLibrarySymbol = '' 
-        myLibraryString = '↩️ to add to your wishlist'
+        myLibrarySymbol = ''
         pic_string = ''
         asinMatch = checkASIN(T['asin'])
         myLibraryString = "↩️ to add to your wish list " + WISHLIST_SYMBOL
@@ -61,39 +63,38 @@ if myTotal >0:
         finishedString = ''
 
         myCurrentRecord = json.dumps(T)
-        
+
         if asinMatch:
             if asinMatch[0] == "wishlist":
                 removeString = ", ↩️ to remove"
                 wishlistCode = 2 #will remove from wishlist
-                
+
             else:
                 removeString = ''
                 wishlistCode = 0 #indifferent
-                
+
             myLibraryString = "this item is in your " + asinMatch[0] + removeString
             myLibrarySymbol = asinMatch[1]
-            pic_string = re.search('https://m.media-amazon.com/images/I/(.+?)._SL500_.jpg', asinMatch[2]).group(1)
-            pic_string = (CACHE_FOLDER_IMAGES+pic_string+".jpg")
-        
+            pic_string = cachedImagePath(asinMatch[2])
+
             if asinMatch[3] == 'True': #is finished checkmark
                 finishedString = "✅"
-        
-            
-            
+
+
+
         # narrator block
         narrator_block, firstNarratorName, narrator_list = collapseNarrators(T)
-        
+
         # getting author info and block
         author_block, firstAuthorID, firstAuthorName, author_list = collapseAuthors(T)
-        
+
         # title description
-        if T['extended_product_description']:
+        if T.get('extended_product_description'):
             myDescription = remove_tags(T['extended_product_description'])
-        else:   
+        else:
             myDescription = ''
         result["items"].append({
-                    "title": T['title'],
+                    "title": T.get('title', ''),
                     "subtitle": str(myCount) + "/"+ str(myTotal) + author_block+narrator_block + " " +myLibrarySymbol+" "+finishedString,
                     "quicklookurl": pic_string,
                     "variables": {
@@ -120,7 +121,7 @@ if myTotal >0:
             "ctrl+cmd": {
                 "valid": 'true',
                 "subtitle": "Open your Wish List on Audible "+ WISHLIST_SYMBOL,
-                "arg": "https://www.audible.com/wl"
+                "arg": "https://www.audible.com/library/wishlist"
             },
             "cmd": {
                 "valid": 'true',
@@ -132,15 +133,15 @@ if myTotal >0:
                 "subtitle": "Search Audible for books narrated by " + firstNarratorName,
                 "arg": MY_URL_ROOT + "search?searchNarrator=" + firstNarratorName
             }},
-                    "icon": {   
+                    "icon": {
 
-                    "path": pic_string 
+                    "path": pic_string
                     },
                     "valid":'TRUE',
-                            
+
                     "arg": T['asin']
                     })
-                
+
 
     print (json.dumps(result))
 
@@ -155,6 +156,3 @@ if myTotal == 0:
             }
             }]}
     print (json.dumps(result))
-
-    
-

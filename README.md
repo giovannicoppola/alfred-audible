@@ -33,12 +33,11 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 ## Needed
 
 - Alfred with Powerpack license
-- Python3 (howto [here](https://www.freecodecamp.org/news/python-version-on-mac-update/))
+- Python 3.10–3.13 (`audible-cli` does not support 3.14 yet; e.g. `brew install python@3.13`)
 - an [Audible](https://www.audible.com/) account
-- `pip3` installed (how to [here](https://dev.to/stankukucka/how-to-install-pip3-on-mac-2hi4))
 
 ## Setting up a new Audible device 📲
-- launch `audible:setup` to 1) download the `audible-cli` package and dependancies and 2) setup your Audible device
+- launch `audible:setup` to 1) install the `audible-cli` package into a dedicated virtualenv (created in the workflow data folder, outside the workflow itself) and 2) setup your Audible device
 - This procedure will add your computer as a mobile device (such devices are listed and can be managed on your [Amazon account](https://www.amazon.com/hz/mycd/digital-console/devicedetails?deviceFamily=AUDIBLE_APP)). Enter `audible:setup` in Alfred to start setting up a new device. A Terminal window will open with the questions below. Hitting Enter (default answer) will be OK except for the ones **in bold**
  	
 	- Please enter a name for your primary profile [audible]: 
@@ -100,8 +99,8 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 <h1 id="known-issues">Limitations & Known issues ⚠️</h1>
 
-- None for now, but I have not done extensive testing, let me know if you see anything!
-- tested with Python 3.8.9
+- `audible-cli` (0.3.3) requires Python 3.10–3.13; the workflow's own scripts run on any recent Python 3
+- tested with Python 3.12
 
 
 <h1 id="acknowledgments">Acknowledgments 😀</h1>
@@ -113,6 +112,7 @@ src="https://img.shields.io/github/downloads/giovannicoppola/alfred-audible/tota
 
 <h1 id="changelog">Changelog 🧰</h1>
 
+- 07-19-2026: version 0.4 (pinned `audible-cli` 0.3.3 in a dedicated virtualenv, faster database refresh, sturdier error handling)
 - 12-04-2022: version 0.3 (Alfred 5)
 - 06-17-2022: version 0.2 (updating the `audible-cli` package)
 - 04-23-2022: version 0.1

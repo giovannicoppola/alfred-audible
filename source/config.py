@@ -7,26 +7,30 @@
 import os
 
 
-WF_BUNDLE = os.getenv('alfred_workflow_bundleid')
-WF_FOLDER = os.getenv('alfred_preferences')+ "/workflows/"+os.getenv('alfred_workflow_uid')
-WF_LIB_FOLDER = WF_FOLDER+"/lib"
+WF_BUNDLE = os.getenv('alfred_workflow_bundleid', 'giovanni-audible')
 
-WISHLIST_SYMBOL = os.path.expanduser(os.getenv('WISHLIST_SYMBOL'))
-UPDATE_DAYS = os.path.expanduser(os.getenv('UPDATE_DAYS'))
-LIBRARY_SYMBOL = os.path.expanduser(os.getenv('LIBRARY_SYMBOL'))
-CATALOG_RESULTS = os.path.expanduser(os.getenv('CATALOG_RESULTS'))
-CACHE_FOLDER = os.getenv('alfred_workflow_cache')
-CACHE_FOLDER_IMAGES = CACHE_FOLDER+"/images/"
-MY_DATABASE = CACHE_FOLDER+"/sql_audi.db"
+# data folder (local, not synced): holds the audible-cli virtualenv
+DATA_FOLDER = os.getenv('alfred_workflow_data') or os.path.expanduser(
+    "~/Library/Application Support/Alfred/Workflow Data/" + WF_BUNDLE)
+VENV_FOLDER = DATA_FOLDER + "/venv"
+VENV_PYTHON = VENV_FOLDER + "/bin/python"
 
-WISHLIST_JSON_FILE = "wishlist.json"
-LIBRARY_JSON_FILE = "library.json"
+WISHLIST_SYMBOL = os.getenv('WISHLIST_SYMBOL') or '📕'
+UPDATE_DAYS = os.getenv('UPDATE_DAYS') or '30'
+LIBRARY_SYMBOL = os.getenv('LIBRARY_SYMBOL') or '📗'
+CATALOG_RESULTS = os.getenv('CATALOG_RESULTS') or '50'
+CACHE_FOLDER = os.getenv('alfred_workflow_cache') or os.path.expanduser(
+    "~/Library/Caches/com.runningwithcrayons.Alfred/Workflow Data/" + WF_BUNDLE)
+CACHE_FOLDER_IMAGES = CACHE_FOLDER + "/images/"
+MY_DATABASE = CACHE_FOLDER + "/sql_audi.db"
+
+# exports are written by audible-cli into the cache folder (see rebuild.py)
+WISHLIST_JSON_FILE = CACHE_FOLDER + "/wishlist.json"
+LIBRARY_JSON_FILE = CACHE_FOLDER + "/library.json"
 MY_URL_STRING = "https://www.audible.com/pd/"
 MY_URL_ROOT = "https://www.audible.com/"
 
 
-if not os.path.exists(CACHE_FOLDER):
-    os.makedirs(CACHE_FOLDER)
-if not os.path.exists(CACHE_FOLDER_IMAGES):
-    os.makedirs(CACHE_FOLDER_IMAGES)
-
+for _folder in (CACHE_FOLDER, CACHE_FOLDER_IMAGES, DATA_FOLDER):
+    if not os.path.exists(_folder):
+        os.makedirs(_folder)

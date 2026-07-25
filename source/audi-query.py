@@ -11,13 +11,12 @@
 import sqlite3
 import json
 import sys
-import re
-from config import CACHE_FOLDER_IMAGES,MY_DATABASE, MY_URL_STRING, MY_URL_ROOT, LIBRARY_SYMBOL, WISHLIST_SYMBOL, WF_LIB_FOLDER
+from config import MY_DATABASE, MY_URL_STRING, MY_URL_ROOT, LIBRARY_SYMBOL, WISHLIST_SYMBOL, VENV_PYTHON
 from audi_fun import *
 
 ### INITIALIZING
-if not os.path.exists(WF_LIB_FOLDER):
-    
+if not os.path.exists(VENV_PYTHON):
+
     resultErr= {"items": [{
         "title": "🚨 need to setup first! 🚨",
         "subtitle": "Enter audible:setup in Alfred",
@@ -28,7 +27,7 @@ if not os.path.exists(WF_LIB_FOLDER):
             }]}
     print (json.dumps(resultErr))
     quit()
-    
+
 
 
 myCheck = checkingTime()
@@ -36,7 +35,7 @@ if myCheck == 'toBeUpdated':
     quit()
 
 
-MYINPUT= sys.argv[1]
+MYINPUT= sys.argv[1] if len(sys.argv) > 1 else ''
 MYQUERY= "%" + MYINPUT + "%"
 
 result = {"items": []}
@@ -49,10 +48,10 @@ cursor = db.cursor()
 
 try:
     cursor.execute("""SELECT title,subtitle,authors,cover_url, asin, symbol, narrators, is_finished,source
-    FROM audible_table 
+    FROM audible_table
     WHERE authors || title || subtitle LIKE ?;
     """,(MYQUERY,))
-    
+
     rs = cursor.fetchall()
 
 except sqlite3.OperationalError as err:
@@ -72,23 +71,21 @@ except sqlite3.OperationalError as err:
 if (rs):
     myResLen = str(len (rs))
     countR=1
-    
+
     for r in rs:
-        
-        title = r[0]  
-        if r[1] != "None":
+
+        title = r[0]
+        if r[1] and r[1] != "None":
             subtitle = r[1] + " - "
         else:
             subtitle=''
-        
-        if r[2]: #author block
-            authors = r[2]
-            firstAuthor = authors.split(',')[0]
 
-        if r[6]: #narrator block
-            narrators = r[6]
-            narratorBlock = " - narrated by: " + narrators
-            firstNarrator = narrators.split(',')[0]
+        authors = r[2] if r[2] and r[2] != "None" else ''
+        firstAuthor = authors.split(',')[0] if authors else ''
+
+        narrators = r[6] if r[6] and r[6] != "None" else ''
+        narratorBlock = " - narrated by: " + narrators if narrators else ''
+        firstNarrator = narrators.split(',')[0] if narrators else ''
 
         if r[7] == 'True': #is finished checkmark
             finishedString = " ✅"
@@ -102,27 +99,27 @@ if (rs):
             removeWishlistBlock = "this item is in your library " + LIBRARY_SYMBOL
             wishlistCode = 0 #indifferent
 
-        pic_string = re.search('https://m.media-amazon.com/images/I/(.+?)._SL500_.jpg', r[3]).group(1)
-        
-    #### COMPILING OUTPUT    
+        iconPath = cachedImagePath(r[3])
+
+    #### COMPILING OUTPUT
         result["items"].append({
         "title": title,
-        "subtitle": str(countR)+"/"+myResLen + " "+ r[5]+subtitle +authors+narratorBlock+finishedString, 
+        "subtitle": str(countR)+"/"+myResLen + " "+ r[5]+subtitle +authors+narratorBlock+finishedString,
         "arg": "",
-        "quicklookurl": (CACHE_FOLDER_IMAGES+pic_string+".jpg"), 
+        "quicklookurl": iconPath,
         "variables": {
                     "myURL": MY_URL_STRING+r[4]
-                    
+
                         },
         "mods": {
             "ctrl": {
                 "valid": 'true',
                 "subtitle": removeWishlistBlock,
-                
+
             "variables": {
             "myCurrentASIN": r[4],
             "wishlistCode": wishlistCode
-            
+
         },
                 "arg": r[4]
             },
@@ -135,7 +132,7 @@ if (rs):
             "ctrl+cmd": {
                 "valid": 'true',
                 "subtitle": "Open your Wish List on Audible "+ WISHLIST_SYMBOL,
-                "arg": "https://www.audible.com/wl"
+                "arg": "https://www.audible.com/library/wishlist"
             },
 
             "cmd": {
@@ -146,16 +143,16 @@ if (rs):
             "option": {
                 "valid": 'true',
                 "subtitle": "Search Audible for books narrated by " + firstNarrator ,
-                "arg": MY_URL_ROOT + "search?searchNarrator=" + firstNarrator 
+                "arg": MY_URL_ROOT + "search?searchNarrator=" + firstNarrator
             }},
-        "icon": {   
-        
-        "path": (CACHE_FOLDER_IMAGES+pic_string+".jpg") 
+        "icon": {
+
+        "path": iconPath
     }
-        
+
 
         })
-        countR += 1  
+        countR += 1
 
     print (json.dumps(result))
 
@@ -170,6 +167,3 @@ if MYINPUT and not rs:
             }
             }]}
     print (json.dumps(resultErr))
-    
-
-
